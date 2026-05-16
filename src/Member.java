@@ -1,13 +1,10 @@
-public abstract class Member {
+public abstract class Member implements Cloneable, Comparable<Member>{
     private int memberID;
     private String name;
     private double height;
 
 
-    //Constructs
-    protected Member() {
-    }
-
+    //Constructor
     protected Member(int memberID, String name, double height) throws InvalidMemberDataException {
         if (height <= 0)
             throw new InvalidMemberDataException("Height must be greater than 0");
@@ -47,5 +44,19 @@ public abstract class Member {
     @Override
     public String toString() {
         return "ID: " + memberID + " | Name: " + name;
+    }
+
+    @Override
+    public int compareTo(Member o){
+        return getName().compareTo(o.getName());
+    }
+
+    @Override
+    public Object clone(){
+        try {
+            return super.clone();
+        }catch (CloneNotSupportedException ex) {
+            return null;
+        }
     }
 }

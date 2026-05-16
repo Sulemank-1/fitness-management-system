@@ -1,8 +1,6 @@
 public class StandardMember extends Member {
 
-
-    public StandardMember(){}
-
+    //Constructor
     public StandardMember(int memberID, String name, double height) throws InvalidMemberDataException{
         super(memberID, name, height);
     }
