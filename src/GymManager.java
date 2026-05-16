@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class GymManager {
@@ -59,7 +60,9 @@ public class GymManager {
     }
 
     public void displayAllMembers(){
-        for (Member member: members)
+         ArrayList<Member> sortedList = new ArrayList<>(members);
+         Collections.sort(sortedList);
+         for (Member member: sortedList)
             System.out.println(member);
     }
 
