@@ -1,13 +1,19 @@
-public class Member {
+public abstract class Member {
     private int memberID;
     private String name;
     private double height;
 
 
     //Constructs
-    public Member(){}
+    protected Member() {
+    }
 
-    public Member(int memberID, String name, double height){
+    protected Member(int memberID, String name, double height) throws InvalidMemberDataException {
+        if (height <= 0)
+            throw new InvalidMemberDataException("Height must be greater than 0");
+
+        if (name == null || name.trim().isEmpty())
+            throw new InvalidMemberDataException("Name cannot be empty");
         this.memberID = memberID;
         this.name = name;
         this.height = height;
@@ -27,7 +33,6 @@ public class Member {
     }
 
 
-
     //Setters
     public void setName(String name) {
         this.name = name;
@@ -37,11 +42,7 @@ public class Member {
         this.height = height;
     }
 
-
-
-    public double calculateMonthlyDues(){
-        return 30.0;
-    }
+    public abstract double calculateMonthlyDues();
 
     @Override
     public String toString() {

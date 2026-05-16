@@ -1,8 +1,10 @@
 public class StudentMember extends Member{
     private String schoolName;
 
-    //Constructor
-    public StudentMember(int memberID, String name, double height, String schoolName){
+    //Constructors
+    public StudentMember(){}
+
+    public StudentMember(int memberID, String name, double height, String schoolName) throws InvalidMemberDataException {
         super(memberID, name, height);
         this.schoolName = schoolName;
     }
