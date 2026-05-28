@@ -1,4 +1,5 @@
 public class StudentMember extends Member{
+    //Data Fields
     private String schoolName;
 
     //Constructor
@@ -17,6 +18,7 @@ public class StudentMember extends Member{
         this.schoolName = schoolName;
     }
 
+    //Methods
     @Override
     public double calculateMonthlyDues(){
         return 30.0 - (30.0 * 0.2);

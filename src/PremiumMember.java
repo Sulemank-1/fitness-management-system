@@ -1,4 +1,5 @@
 public class PremiumMember extends Member{
+    //Data Fields
     private final double personalTrainerFee = 100;
 
     //Constructor
@@ -6,6 +7,7 @@ public class PremiumMember extends Member{
         super(memberID, name, height);
     }
 
+    //Methods
     @Override
     public double calculateMonthlyDues(){
         return 30.0 + personalTrainerFee;
