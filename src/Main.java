@@ -1,11 +1,10 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         GymManager manager = new GymManager("Titan Fitness");
-        final String FILE_NAME = "members.csv";
+        final String FILE_NAME = "members.dat";
 
         manager.loadMembersFromFile(FILE_NAME);
 
@@ -15,8 +14,9 @@ public class Main {
             System.out.println("1. Add a New Member");
             System.out.println("2. View All Members");
             System.out.println("3. Search Member by ID");
-            System.out.println("4. Calculate Total Monthly Revenue");
-            System.out.println("5. Save and Exit");
+            System.out.println("4. Remove Member by ID");
+            System.out.println("5. Calculate Total Monthly Revenue");
+            System.out.println("6. Save and Exit");
             System.out.print("Enter your choice: ");
 
             int choice = 0;
@@ -85,10 +85,21 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.printf("Total Expected Monthly Revenue: $%.2f\n", manager.calculateTotalRevenue());
+                    System.out.print("Enter Member ID to remove: ");
+                    int removeId = input.nextInt();
+                    boolean removed = manager.removeMember(removeId);
+                    if (removed) {
+                        System.out.println("Member removed");
+                    } else {
+                        System.out.println("No member found with ID: " + removeId);
+                    }
                     break;
 
                 case 5:
+                    System.out.printf("Total Expected Monthly Revenue: $%.2f\n", manager.calculateTotalRevenue());
+                    break;
+
+                case 6:
                     manager.saveMembersToFile(FILE_NAME);
                     running = false;
                     break;
