@@ -1,4 +1,7 @@
-public abstract class Member implements Cloneable, Comparable<Member>{
+import java.io.Serializable;
+
+public abstract class Member implements Serializable, Cloneable, Comparable<Member>{
+    //Data Fields
     private int memberID;
     private String name;
     private double height;
@@ -39,6 +42,7 @@ public abstract class Member implements Cloneable, Comparable<Member>{
         this.height = height;
     }
 
+    //Methods
     public abstract double calculateMonthlyDues();
 
     @Override
