@@ -5,8 +5,14 @@ public class StandardMember extends Member {
         super(memberID, name, height);
     }
 
+    //Methods
     @Override
     public double calculateMonthlyDues() {
         return 30.0;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Membership Type: Standard Member";
     }
 }
