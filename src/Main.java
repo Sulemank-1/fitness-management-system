@@ -10,7 +10,7 @@ public class Main {
 
         boolean running = true;
         while (running) {
-            System.out.println("\n=== " + "Titan Fitness Management System ===");
+            System.out.println("\n=== " + manager.getGymName() +" Management System ===");
             System.out.println("1. Add a New Member");
             System.out.println("2. View All Members");
             System.out.println("3. Search Member by ID");
@@ -19,9 +19,9 @@ public class Main {
             System.out.println("6. Save and Exit");
             System.out.print("Enter your choice: ");
 
-            int choice = 0;
+            int choice;
             try {
-                choice = input.nextInt();
+                choice = Integer.parseInt(input.nextLine().trim());
             } catch (InputMismatchException e) {
                 System.out.println("Error: Please enter a valid menu number.");
                 input.nextLine();
@@ -32,18 +32,18 @@ public class Main {
                 case 1:
                     try {
                         System.out.print("Enter Member ID: ");
-                        int id = input.nextInt();
+                        int id = Integer.parseInt(input.nextLine().trim());
                         System.out.print("Enter Name: ");
-                        String name = input.next();
+                        String name = input.nextLine().trim();
                         System.out.print("Enter Height (cm): ");
-                        double height = input.nextDouble();
+                        double height = Double.parseDouble(input.nextLine().trim());
 
                         System.out.println("Select Membership Type:");
                         System.out.println("1. Standard ($30)");
                         System.out.println("2. Student ($24 - 20% Off)");
                         System.out.println("3. Premium ($130 - Includes Trainer)");
                         System.out.print("Choice: ");
-                        int typeChoice = input.nextInt();
+                        int typeChoice = Integer.parseInt(input.nextLine().trim());
 
                         switch (typeChoice) {
                             case 1:
@@ -51,7 +51,7 @@ public class Main {
                                 break;
                             case 2:
                                 System.out.print("Enter School Name: ");
-                                String school = input.next();
+                                String school = input.nextLine().trim();
                                 manager.addMember(new StudentMember(id, name, height, school));
                                 break;
                             case 3:
@@ -86,7 +86,7 @@ public class Main {
 
                 case 4:
                     System.out.print("Enter Member ID to remove: ");
-                    int removeId = input.nextInt();
+                    int removeId = Integer.parseInt(input.nextLine().trim());
                     boolean removed = manager.removeMember(removeId);
                     if (removed) {
                         System.out.println("Member removed");
