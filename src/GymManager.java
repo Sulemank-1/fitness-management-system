@@ -71,37 +71,11 @@ public class GymManager {
     }
 
     public void saveMembersToFile(String filename) {
-        try (
-                 ObjectOutputStream output =
-                         new ObjectOutputStream( new BufferedOutputStream( new FileOutputStream(filename)))
-        ) {
-            output.writeObject(members);
-            System.out.println("All members successfully saved to file");
-        } catch (IOException e) {
-            System.out.println("System Error: Could not save data to file. " + e.getMessage());
-        }
+        StorageEngine.saveData(filename, members);
     }
 
     public void loadMembersFromFile(String filename) {
-        File file = new File(filename);
-        if (!file.exists()) {
-             System.out.println("No existing record file found.");
-             return;
-        }
-
-        try (
-                 ObjectInputStream input = new ObjectInputStream( new BufferedInputStream( new FileInputStream(file)))
-        ) {
-            members = (ArrayList<Member>) (input.readObject());
-            System.out.println("Data successfully loaded from " + filename);
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Missing class definition blueprint during object reconstruction.");
-        }catch (StreamCorruptedException ex){
-             System.out.println("File has been manually tampered with or corrupted! Access Blocked.");
-        }catch (IOException ex){
-             System.out.println("Error reading file. " + ex.getMessage());
-        }
-
+        members = StorageEngine.loadData(filename);
     }
 
 }
