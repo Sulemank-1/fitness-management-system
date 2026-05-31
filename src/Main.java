@@ -22,7 +22,7 @@ public class Main {
             int choice;
             try {
                 choice = Integer.parseInt(input.nextLine().trim());
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Error: Please enter a valid menu number.");
                 input.nextLine();
                 continue;
@@ -62,7 +62,7 @@ public class Main {
                         }
                     } catch (InvalidMemberDataException e) {
                         System.out.println("Registration Failed: " + e.getMessage());
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Registration Failed: Invalid data type entered.");
                         input.nextLine();
                     }
